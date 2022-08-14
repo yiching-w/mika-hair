@@ -6916,6 +6916,11 @@ footer {
     width: 100%;
 }
 
+.left_side div {
+    width: 100%;
+    text-align: center;
+}
+
 .intro {
     position: relative;
     height: 500px;
