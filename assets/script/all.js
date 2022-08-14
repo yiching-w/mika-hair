@@ -4,7 +4,7 @@
     $(window).load(function () {
         // Page loader
         $("body").imagesLoaded(function () {
-            $(".page-loader").delay(1000).fadeOut("slow");
+            $(".page-loader").delay(300).fadeOut("slow");
         });
 
         $(window).trigger("scroll");
@@ -277,12 +277,23 @@
         speed: 0.1
     });
 
-    [].forEach.call(document.querySelectorAll('img[data-src]'), function (img) {
-        img.setAttribute('src', img.getAttribute('data-src'));
-        img.onload = function () {
-            img.removeAttribute('data-src');
-        };
-    });
+    const watcher = new IntersectionObserver(onEnterView)
+    const lazyImages = document.querySelectorAll('img[data-src]')
+    for (let image of lazyImages) {
+        watcher.observe(image) // 開始監視
+    }
+
+    function onEnterView(entries, observer) {
+        for (let entry of entries) {
+            if (entry.isIntersecting) {
+                // 監視目標進入畫面
+                const img = entry.target
+                img.setAttribute('src', img.dataset.src) // 把值塞回 src
+                img.removeAttribute('data-src')
+                observer.unobserve(img) // 取消監視
+            }
+        }
+    }
 
     let perPage = 6;
     $('.pagination-container').each(function (idx) {
