@@ -6745,7 +6745,6 @@ section:hover .item-carousel.owl-carousel .owl-next {
     }
 
     .nav-pills .nav-link {
-        font-size: 0.8rem;
         padding: 5px 15px;
     }
 }
@@ -6914,6 +6913,7 @@ footer {
     align-items: center;
     justify-content: center;
     height: 350px;
+    width: 100%;
 }
 
 .intro {
@@ -7115,20 +7115,8 @@ footer {
     }
 }
 
-@media (max-width:450px) {
-    .intro-title {
-        right: 60px;
-        bottom: 100px;
-        font-size: 35px;
-    }
-
-    .intro-img-1 {
-        width: 200px;
-        bottom: 80px;
-    }
-
+@media (max-width:380px) {
     .intro-img-3 {
-        top: -50px;
-        width: 180px;
+        width: 160px;
     }
 }
